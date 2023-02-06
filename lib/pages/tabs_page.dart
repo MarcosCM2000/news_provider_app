@@ -45,6 +45,7 @@ class _Paginas extends StatelessWidget {
   Widget build(BuildContext context) {
     final navegacionModel = Provider.of<_NavegacionModel>(context);
     return PageView(
+      controller: navegacionModel._pageController,
       physics: const NeverScrollableScrollPhysics(),
       children: <Widget>[
         Container(color: Colors.red),
@@ -56,11 +57,17 @@ class _Paginas extends StatelessWidget {
 
 class _NavegacionModel extends ChangeNotifier {
   int _paginaActual = 0;
+  PageController _pageController = PageController();
 
   int get paginaActual => _paginaActual;
 
   set paginaActual(int valor) {
     _paginaActual = valor;
+    //  switch page
+    _pageController.animateToPage(valor,
+        duration: const Duration(milliseconds: 250), curve: Curves.easeOut);
     notifyListeners();
   }
+
+  PageController get pageController => _pageController;
 }
