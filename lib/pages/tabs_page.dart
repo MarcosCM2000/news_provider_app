@@ -25,6 +25,9 @@ class _Navegacion extends StatelessWidget {
   Widget build(BuildContext context) {
     final navegacionModel = Provider.of<_NavegacionModel>(context);
     return BottomNavigationBar(
+        selectedItemColor: Colors.red,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         currentIndex: navegacionModel.paginaActual,
         onTap: (value) => navegacionModel.paginaActual = value,
         items: const <BottomNavigationBarItem>[
