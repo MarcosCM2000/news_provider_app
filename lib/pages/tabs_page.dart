@@ -28,9 +28,9 @@ class _Paginas extends StatelessWidget {
     return PageView(
       controller: navegacionModel._pageController,
       physics: const NeverScrollableScrollPhysics(),
-      children: <Widget>[
-        const Tab1Page(),
-        Container(color: Colors.green),
+      children: const <Widget>[
+        Tab1Page(),
+        Tab2Page(),
       ],
     );
   }
