@@ -18,8 +18,14 @@ class NewsService extends ChangeNotifier {
     Category(FontAwesomeIcons.volleyball, 'sports'),
     Category(FontAwesomeIcons.memory, 'technology'),
   ];
-
   Map<String, List<Article>> categoryArticles = {};
+
+  NewsService() {
+    getTopHeadlines();
+    categories.forEach((element) {
+      categoryArticles[element.name] = [];
+    });
+  }
 
   String get selectedCategory => _selectedCategory;
   set selectedCategory(String value) {
@@ -28,12 +34,8 @@ class NewsService extends ChangeNotifier {
     notifyListeners();
   }
 
-  NewsService() {
-    getTopHeadlines();
-    categories.forEach((element) {
-      categoryArticles[element.name] = [];
-    });
-  }
+  List<Article> get getArticulosCategoriaSeleccionada =>
+      categoryArticles[_selectedCategory]!;
 
   getTopHeadlines() async {
     final url = Uri.https(
