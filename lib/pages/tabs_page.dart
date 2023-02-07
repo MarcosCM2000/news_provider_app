@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_provider_app/pages/pages.dart';
 import 'package:provider/provider.dart';
 
 class TabsPage extends StatelessWidget {
@@ -12,6 +13,25 @@ class TabsPage extends StatelessWidget {
         body: Center(child: _Paginas()),
         bottomNavigationBar: _Navegacion(),
       ),
+    );
+  }
+}
+
+class _Paginas extends StatelessWidget {
+  const _Paginas({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final navegacionModel = Provider.of<_NavegacionModel>(context);
+    return PageView(
+      controller: navegacionModel._pageController,
+      physics: const NeverScrollableScrollPhysics(),
+      children: <Widget>[
+        const Tab1Page(),
+        Container(color: Colors.green),
+      ],
     );
   }
 }
@@ -36,25 +56,6 @@ class _Navegacion extends StatelessWidget {
           BottomNavigationBarItem(
               icon: Icon(Icons.public), label: 'Encabezados'),
         ]);
-  }
-}
-
-class _Paginas extends StatelessWidget {
-  const _Paginas({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final navegacionModel = Provider.of<_NavegacionModel>(context);
-    return PageView(
-      controller: navegacionModel._pageController,
-      physics: const NeverScrollableScrollPhysics(),
-      children: <Widget>[
-        Container(color: Colors.red),
-        Container(color: Colors.green),
-      ],
-    );
   }
 }
 
