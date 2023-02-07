@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_provider_app/models/news_models.dart';
+import 'package:news_provider_app/models/models.dart';
 import 'package:news_provider_app/theme/theme.dart';
 
 class ListaNoticias extends StatelessWidget {
