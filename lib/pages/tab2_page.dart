@@ -67,7 +67,9 @@ class _CategoryButton extends StatelessWidget {
             const BoxDecoration(shape: BoxShape.circle, color: Colors.white),
         child: Icon(
           category.icon,
-          color: Colors.black54,
+          color: category.name == newsService.selectedCategory
+              ? Colors.redAccent
+              : Colors.black54,
         ),
       ),
     );
